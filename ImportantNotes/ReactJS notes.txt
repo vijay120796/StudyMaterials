@@ -1,0 +1,207 @@
+
+ReactJS:
+
+The Render Function:
+The ReactDOM.render() function takes two arguments, HTML code and an HTML element.
+The purpose of the function is to display the specified HTML code inside the specified HTML element
+
+Example:
+ReactDOM.render(<p>Hello</p>, document.getElementById('root'));
+
+React JSX:
+JSX stands for JavaScript XML.
+JSX allows us to write HTML in React.
+JSX makes it easier to write and add HTML in React.
+
+Example:
+const myelement = <h1>I Love JSX!</h1>;
+ReactDOM.render(myelement, document.getElementById('root'));
+
+React Components:
+
+Components are independent and reusable bits of code. They serve the same purpose as JavaScript functions, but work in isolation and returns HTML via a render function.
+Components come in two types, Class components and Function components, in this tutorial we will concentrate on Class components.
+
+Shortcut: imrc, CC
+
+Example:
+class Car extends React.Component {
+  render() {
+    return <h2>Hi, I am a Car!</h2>;
+  }
+}
+
+index.js file which renders and display Car component:
+ReactDOM.render(<Car />, document.getElementById('root'));
+
+
+Props:
+
+Props are arguments passed into React components.
+Props are passed to components via HTML attributes.
+
+React Props are like function arguments in JavaScript and attributes in HTML.
+To send props into a component, use the same syntax as HTML attributes:
+
+Example:
+const myelement = <Car brand="Ford" />;
+
+class Car extends React.Component {
+  render() {
+    return <h2>I am a {this.props.brand}!</h2>;
+  }
+}
+
+
+React State:
+
+The state object is where you store property values that belongs to the component.
+When the state object changes, the component re-renders.
+
+Example:
+
+class Car extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      brand: "Ford",
+      model: "Mustang",
+      color: "red",
+      year: 1964
+    };
+  }
+  changeColor = () => {
+    this.setState({color: "blue"});
+  }
+  render() {
+    return (
+      <div>
+        <h1>My {this.state.brand}</h1>
+        <p>
+          It is a {this.state.color}
+          {this.state.model}
+          from {this.state.year}.
+        </p>
+        <button
+          type="button"
+          onClick={this.changeColor}
+        >Change color</button>
+      </div>
+    );
+  }
+}
+
+or
+
+class Car extends React.Component {
+    state = {
+      brand: "Ford",
+      model: "Mustang",
+      color: "red",
+      year: 1964
+    };
+
+SetState(): 
+It is used to change the value of the state.
+Example:
+  changeColor = () => {
+    this.setState({color: "blue"});
+  }
+  
+Lifecycle of components:
+
+The three phases are: 
+Mounting - Added to DOM
+Updating - COmponent is updated whenever there is any change in props or state.
+Unmounting - Removed from DOM
+
+React Events:
+
+onClick={shoot}
+Example:
+<button onClick={shoot}>Take the Shot!</button>
+
+Forms:
+
+class MyForm extends React.Component {
+  render() {
+    return (
+      <form>
+        <h1>Hello</h1>
+        <p>Enter your name:</p>
+        <input
+          type="text"
+        />
+      </form>
+    );
+  }
+}
+ReactDOM.render(<MyForm />, document.getElementById('root'));
+
+Handling forms, Conditional rendering(if statement), Submiting forms(submit button -> onSubmit), 
+
+Aspects of ReactJS:
+
+Virtual DOM:
+Data Binding: Unidirectional flow of data (Action -> Dispacher -> Store -> View)
+Serverside rendering: Server pre-renders the react components and send HtML to browsers.
+
+Fundamentals of reactJS:
+
+JSX
+Components
+Props
+States
+Lifecycle
+Events
+Refs
+Keys
+
+-----
+Lifting up the state: moving the state along with its methods to parent.
+
+Single Source of Truth: moving the state along with its methods to parent so any change in parent will affect all the child.//Refer internet once
+
+GIT:
+
+Distributed Version Control System.
+
+Create repository:  create folder
+Create files: 
+COmmit - maintains all the files which is commited before to go back to the old code.
+Ignore - intentionally ignore in the commit log list
+
+Branch - Create a branch while commit. 
+
+	
+Compare and pull - Used to merge two branches.
+mark as resolve - if any conflict occurs.
+Merge : Confirm merge.
+
+Fork: (open sourcce contribution)
+
+Anonymous account:
+Fork - Create a new file 
+pull reqest - and send a pull request.
+Commit
+
+Project owner account:
+Check on pull requests
+open the pul request
+verify the changes
+merge pull request.
+
+Git pull = git fetch + git merge
+
+Git pull command pulls innovation or commits from a specific branch from your central repository and updates your object branch in your local repository.
+
+Git fetch is also used for the same objective, but it works in a slightly different method. 
+When you behave a git fetch, it pulls all new commits from the desired branch and saves it in a new branch in your local repository. 
+If you need to reflect these changes in your target branch, git fetch should be followed with a git merge. 
+Your target branch will only be restored after combining the target branch and fetched branch. 
+To make it simple for you, remember the equation above.
+
+GIT Clone:
+The git clone command generates a copy of a current Git repository. To get the copy of a central repository, 'cloning' is the simplest way used by programmers.
+
+

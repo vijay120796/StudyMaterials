@@ -1,0 +1,297 @@
+JAVA COLLECTION FRAMEWORK:
+
+COLLECTION: The container which groups multiple items in a single unit. It is dynamic i.e. The items in the collection container can be modified.
+
+COLLECTION FRAMEWORK: It provides an architecture to store and manipulate a group of objects. Variuos operations can be performed such as 
+						- searching, sorting, inserting, manipulating, deleting, etc,.
+						COllection framework provides many interfaces and classes.
+						
+COLLECTION FRAMEWORK HIERARCHY: refer pics  in this folder
+
+ITERABLE - COLLECTIONS -> 
+1. LIST -> 
+2. QUEUE -> 
+3. SET -> 
+4. MAP -> 
+
+INTERFACE: Like a class, an interface can have methods and variables, but the methods declared in an interface are by default abstract (only method signature, no body). 
+			Interfaces specify what a class must do and not how. It is the blueprint of the class.
+			
+ITERATOR interface: provides the facility to iterate the elements in forward direction. 
+Methods: public boolean hasNext(), public object next(), public void remove().
+
+ITERABLE interface: ROOT interface for all the collection classes along with its sub-classes. It also implements the iterable  interface.
+Method: Iterator<T> iterator();
+
+COLLECTION interface: This interface is implemented by all its classes in collection framework. It declared the method that every collection will contain. 
+Method: Boolean add(Object obj), Boolean addAll(Object obj), void clear(),...
+
+
+----------------
+
+JAVA LIST: It is a interface that extends collection framework. It stores elements in index approach, we can also add duplicate elements.
+			List supports redundancy. 
+
+TYPES: 1. ARRAY LIST, 2. LINKED LIST, 3. VECTOR.
+
+1. ARRAY LIST: It is the implementation of the list interface. We can add or remove the data dynamically from the list. 
+				The data is added in an index approach. The size increases dynamically if the elements are added. 
+				index: 0,1,2,3,4,5,6,...n
+				
+		METHODS(java.utils.ArrayList): boolean add(Collection c), Object[] toArray(), int lastIndexOf(Object o), void add ( int index, Object element), Object clone(), void clear(), void trimToSize().
+
+		
+2. LINKED LIST: It is a sequence of links which contains items. Each link contains a connector to another link. 
+	TYPES: SINGLY, DOUBLY.
+	SINGLY: has reference to the next node. Keeps moving till we get the null in the end.
+	DOUBLY: has reference to both next and previous nodes. Keeps moving till we get the null in the end.
+		
+		METHODS(java.utils.LinkedList): boolean add(Collection c), Object[] toArray(), int lastIndexOf(Object o), void add ( int index, Object element), Object clone(), void clear(), void trimToSize().
+
+3. VECTOR: Vector is similar to ArrayList. The difference is, Vector is synchronized -> Thread safe.		
+		METHODS(java.utils.Vectors):  boolean add(Collection c), Object[] toArray(), int lastIndexOf(Object o), void add ( int index, Object element), Object clone(), void clear(), void trimToSize().
+
+		
+EXAMPLES: ADD data to the list, GET elements from list, UPDATE elements in list, REMOVE elements from list, ITERATE from ArrayList, CHECK CONDITIONS.
+
+1. list1.add("Vijay");
+2. Object o = list1.get(2);  (2 -> index number)
+3. list1.set(2,"Ray");
+4. list1.remove(2);
+5. list1.clear(); -> remove all
+6. Iteartion -> forloop, enhanced forloop, with Iteartor, Itearator with While.
+
+for(int i = 0; i<list1.size(); i++){ System.out.println(list.get(i);}
+for( String str : list1) { System.out.println(str);}
+
+Iterator<String> itr = list1.iterator();
+System.out.println(itr.Next()); //one by one
+
+while(itr.hasNext()){ 
+String str = itr.next();
+System.out.println(str)
+}
+
+7. CHECK CONDITIONS: 
+if(sr.equals("Jack")){ itr.remove();}
+
+Similarly use it for LinkedList and Vector.
+	
+============================================================================================================
+
+JAVA QUEUE:
+FIFO - First IN First Out approach
+First element is removed first and Last element is removed in the end.
+
+Queue<Integer> q = new LinkedList<>();
+
+0,1,2,3,4,5,6...n   -> n will be removed first, 0 will be removed last.
+
+METHODS: boolean add(object), Object remove(), Object element(), object peek(), object poll(), boolean offer(object).
+
+PriorityQueue: This sorts the data in the queue. Shortest in front.
+
+Peeking: Obtaining head of Queue.
+Polling: Remove the head of Queue.
+
+
+EXAMPLES:
+import java.util.PriorityQueue;
+
+public class QueueDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		PriorityQueue<Integer> queue = new PriorityQueue<Integer>();
+		
+		for(int i=10;i>0;i--) {
+			queue.add(i);
+		}
+		System.out.println(queue);
+		System.out.println(queue.peek());
+		System.out.println(queue.poll());
+		System.out.println(queue.peek());
+		System.out.println(queue.size());
+		System.out.println(queue);
+	}
+
+}
+
+=======================================================================================================================
+JAVA SET:
+SET refers to a collection that cannot contain duplicate elements.
+It is mainly used to model the mathematical set abstraction. 
+
+SET has its implementation in 3 various classes.
+
+1. HashSet
+2. LinkedHashSet
+3. TreeSet
+
+HashSet: 
+It creates a collection that uses HashTable for storage.
+It only contains unique elements.
+It inherits the Abstract class and implements set interface.
+It uses Hashing mechanism to store the elements.
+
+HashSet<String> al = new HashSet();
+
+METHODS: boolean add(object c), boolean remove(object), void clear(), Iterator iterator(), int size(), boolean isEmpty(), boolean contains(object o), Object clone().
+
+LinkedHashSet:
+It creates a collection that uses HashTable for storage.
+It implements LinkedList of the set interface.
+It only contains unique elements.
+It provides all optional SET operations and maintains insertion order.
+
+ LinkedHashSet<String> al = new LinkedHashSet();
+ 
+METHODS: This class inherits methods from other classes.
+HashSet, AbstractCollection, Object, AbstractSet, Set.
+
+import java.util.HashSet;
+import java.util.Iterator;
+
+public class SetDemo {
+
+	public static void main(String[] args) {
+		HashSet<String> set = new HashSet();
+		
+		//Here data is not added in indexing approach
+		//We got hashcodes for elements which are being added.
+		//Data is unordered in output due to hashing.
+		//Unique elements, no redundency.
+		//No index for iterating.
+		
+		set.add("John");
+		set.add("Vijay");
+		set.add("Ray");
+		set.add("Nanda");
+		set.add("Maha");
+		set.add("Joe");
+		set.add("Vijay");
+		
+		System.out.println("The SET is:  "+set);
+		
+		//To iterate we can use Iterator
+		
+		Iterator<String> itr = set.iterator();
+		while(itr.hasNext()) {
+			String str = itr.next();
+			System.out.println(str);
+		
+			
+		}
+		System.out.println("Set size: "+set.size());
+	}
+
+}
+
+Output:
+
+The SET is:  [Nanda, Joe, Vijay, John, Maha, Ray]
+Nanda
+Joe
+Vijay
+John
+Maha
+Ray
+Set size: 6
+
+============================================================================================================
+
+TreeSet:
+It is a sorted version of SET. 
+This class implements the SET interface and uses a tree for storage.
+Objects of this class is unique.
+The objects are sorted in ascending order.
+It inherits AbstractSet and implements NavigableSet interface.
+
+TreeSet<String> al = new TreeSet();
+
+METHODS: similar methods as others. boolean add(object c), boolean remove(object), void clear(), Iterator iterator(), int size(), boolean isEmpty(), boolean contains(object o), Object clone().
+
+
+import java.util.TreeSet;
+import java.util.Iterator;
+
+public class TreeSetDemo {
+	public static void main(String[] args) {
+		TreeSet<String> set = new TreeSet();
+		
+		//TreeSet is a sorted version of HashSet
+		
+		set.add("John");
+		set.add("Vijay");
+		set.add("Ray");
+		set.add("Nanda");
+		set.add("Maha");
+		set.add("Joe");
+		set.add("Vijay");
+		
+		System.out.println("The SET is:  "+set);
+		
+		//To iterate we can use Iterator
+		
+		Iterator<String> itr = set.iterator();
+		while(itr.hasNext()) {
+			String str = itr.next();
+			System.out.println(str);
+		
+			
+		}
+		System.out.println("Set size: "+set.size());
+	}
+
+}
+
+
+Output:
+
+The SET is:  [Joe, John, Maha, Nanda, Ray, Vijay]
+Joe
+John
+Maha
+Nanda
+Ray
+Vijay
+Set size: 6
+
+=====================================================================================================
+
+COLLECTION MANIPULATION on OBJECTS:
+
+EXAMPLE:
+
+		//Get the list of users:
+		@GetMapping("admin/username/{name}")
+		public List<User> getUsers(@PathVariable("name") String name) {
+			List<User> users= urepo.findAll();
+			List<User> username = new ArrayList<User>();
+			for(User user1 :users) {
+				if(user1.getUsername().equals(name)) {
+					user1.setEmail("vijay.s@gmail.com");;
+					username.add(user1);
+				}
+			}
+		return username;
+		
+		
+		
+===================================================================================================
+MAP:
+HASHMAP:
+
+METHODS: void clear(), 
+boolean containsKey(Object key)
+boolean ContainsValue(object value)
+Object Clone()
+Boolean isEmpty()
+Object get(object key)
+Set keyset()
+Int Size()
+Object Put(object Key, value)
+putAll(Map M)
+Object Remove(Object key)
+Collection values()
+

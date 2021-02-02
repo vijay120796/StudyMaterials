@@ -1,0 +1,10 @@
+REST API:
+
+Principles of rest api:
+
+1. Stateless - every request sent from the client to server must include all the info needed to comprehend the request.(URL,headers, body)
+2. client server - 
+3. Uniform interface
+4. cacheable
+5. layered system
+6. code on demand

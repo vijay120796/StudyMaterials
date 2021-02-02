@@ -1,0 +1,39 @@
+JDBC:
+
+import package - import java.sql.*
+load the driver - Class.forName("com.mysql.jdbc.Driver");   
+register driver - automatically in backend
+establish the connection - Connection con=DriverManager.getConnection(  "jdbc:mysql://localhost:3306/sonoo","root","root");   
+create a statement - 	Statement stmt=con.createStatement();  
+execute query - ResultSet rs=stmt.executeQuery("select * from emp");   
+process the result - (rs.next())  
+close the connection -	con.close();    (transactions)
+
+Hibernate:
+
+Core components:
+
+configuration
+sessionfactory
+session
+transaction - transaction factory
+query - 
+
+cache - EH cache
+
+steps: 
+add dependencies to pom.xml
+pojo - with annotations
+configuration - 
+DAO -
+
+mapping 
+oneto Many
+
+Fetch- eager, lazy
+
+Lifecycle: 
+transient, persistent, detached, removed
+
+Get vs Load
+

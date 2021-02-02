@@ -1,0 +1,328 @@
+ Java reference notes:
+
+JDK -> JRE -> JVM
+
+JVM(Java Virtual Machine) - VIrtual machine which is used to provide a runtime environment in which Java bytecode can be executed.
+
+JRE(Java Runtime Environment) - The Java Runtime Environment is a set of software tools which are used for developing Java applications. 
+It physically exists. It contains a set of libraries + other files that JVM uses at runtime.
+
+JDK(Java Development Kit) -  The Java Development Kit (JDK) is a software development environment which is used to develop Java applications and applets. 
+It physically exists. It contains JRE + development tools.
+
+JDK is an implementation of any one of the below given Java Platforms released by Oracle Corporation:
+
+Standard Edition Java Platform
+Enterprise Edition Java Platform
+
+Variables:
+
+Types of Variables
+There are three types of variables in Java:
+
+local variable
+instance variable
+static variable
+
+
+Control statements:
+
+if, if-else, is-else-if, nested if, Switch.
+For, while, do while, Break, Continue.
+
+Java OOPs:
+
+Objects, Class, Inheritance, Polymorphism, Abstraction, Encapsulation.
+Coupling, Cohesion, Association, Aggregation, Composition.
+
+Objects:
+Any entity that has state and behavior is known as an object. For example, a chair, pen, table, keyboard, bike, etc. It can be physical or logical.
+An Object can be defined as an instance of a class. An object contains an address and takes up some space in memory.
+Identity is used by JVM to identify object.
+ Student s1=new Student(); //s1 is object , student is class
+ 
+ Heap memory - where the instance objects are stored.
+ Stack memory - where the name of he object s stored pointing the heap memory.( variables values are stored in stack memory itself).
+
+Class: 
+Collection of objects is called class. It is a logical entity.
+A class is a template or blueprint from which objects are created. Class doesn't consume any space.
+Class contains -> Fields, Methods, Constructors, Blocks, Nested class and interface.
+
+Syntax: class Student{} //Student is class.
+
+Types of classes: 
+Concrete - normal class
+Abstract Class - A class declared with abstract keyword and have zero or more abstract methods are known as abstract class.
+Syntax: abstract class Animal {public abstract void sound();}
+Final Class - A class declared with the final keyword is a final class and it cannot be extended by another class
+Syntax: final class Base{}
+POJO class: A class that contains only private variables and setter and getter methods to use those variables is called POJO (Plain Old Java Object) class. It is a fully encapsulated class
+Static class: Static classes are nested classes means a class declared within another class as a static member is called a static class.//Class inside class with static keyword.
+Inner Class: A class declared within another class or method is called an inner class. Without static keyword.
+
+
+Inheritance
+When one object acquires all the properties and behaviors of a parent object, it is known as inheritance
+
+Polymorphism
+If one task is performed in different ways, it is known as polymorphism.
+
+Abstraction
+Hiding internal details and showing functionality is known as abstraction.
+
+Encapsulation
+Binding (or wrapping) code and data together into a single unit are known as encapsulation.
+
+Coupling
+Coupling refers to the knowledge or information or dependency of another class.
+
+METHODS:
+
+In general, a method is a way to perform some task.  It provides the reusability of code. 
+method in Java, types of methods, method declaration, and how to call a method in Java.
+
+Syntax:
+
+Public int sum ( int a, int b) { //method body }
+
+Public - access specifier, 
+int - return type
+sum - method name
+parameter in bracket with type
+method body - task (a+b)
+
+Access specifier:
+
+Public - Accessible by all the classes
+Private - Only in the defined class
+protected - within the package or subclass of different package
+default - Visible only in the same package( no specifier used)
+
+Return Type: Return type is a data type that the method returns. It may have a primitive data type, object, collection, void, etc. 
+If the method does not return anything, we use void keyword.
+
+Types of methods:
+
+1. Predefined methods - Directly use them by calling them. Use static keyword.
+
+eg: length(), equals(), compareTo(), sqrt(),  main(), print(), and max().
+public static int add()
+
+2. User defined methods: 
+
+Static method: a method that belongs to a class rather than an instance of a class is known as a static method. 
+public static void main(String[] args)   {}
+
+Instance method: It is a non-static method defined in the class. Before calling or invoking the instance method, it is necessary to create an object of its class.
+Using object we call the method.
+It has accessors(get) and mutators (set)
+
+Abstract method:
+The method that does not has method body is known as abstract method. In other words, without an implementation is known as abstract method. 
+It always declares in the abstract class. 
+It means the class itself must be abstract if it has abstract method. To create an abstract method, we use the keyword abstract.
+
+abstract class Demo
+{ abstract void display();  }
+
+Factory methods:
+It is a method that returns an object to the class to which it belongs. All static methods are factory methods. 
+For example, NumberFormat obj = NumberFormat.getNumberInstance();
+
+
+CONSTRUCTORS:
+
+It has the same name as class name.
+It is a special type of method which is used to initialize the object.
+ It is called when an instance of the class is created. 
+At the time of calling constructor, memory for the object is allocated in the memory.
+Every time an object is created using the new() keyword, at least one constructor is called
+It calls a default constructor if there is no constructor available in the class. In such case, Java compiler provides a default constructor by default.
+It will not return anything.
+
+Types:
+
+1. Default Constructor( No-Arg condtructor) : The default constructor is used to provide the default values to the object like 0, null, etc., depending on the type.
+
+class bike{
+bike(){system.out.print("Bike is created")}
+
+2. Parameterized constructor: The parameterized constructor is used to provide different values to distinct objects. However, you can provide the same values also.
+
+class Student4{  
+    int id;  
+    String name;  
+    //creating a parameterized constructor  
+    Student4(int i,String n){  
+    id = i;  
+    name = n;  
+    }  
+
+	
+Constructor Overloading: We can overload the constructor based on the parameter.
+class Student5{  
+    int id;  
+    String name;  
+    int age;  
+    //creating two arg constructor  
+    Student5(int i,String n){  
+    id = i;  
+    name = n;  
+    }  
+    //creating three arg constructor  
+    Student5(int i,String n,int a){  
+    id = i;  
+    name = n;  
+    age=a;  
+    }  
+	
+Static keyword: 
+The static keyword belongs to the class than an instance of the class.
+It is used for memory management. 
+We can apply static keyword with variables, methods, blocks and nested classes. 
+The static variable in not created when we instanciate a object. Because it is static and does not change so we make it as static variable. Eg: college name in students marklist.
+Non-static variables cannot be used inside static methods.
+static variables can be used inside static methods and non-static methods.
+They can be used directly using classname. Eg: Abc.show(); or Abc.var;
+Check for static block, static inner class.
+Static inner class have access only to the static variables of the parent class.
+
+Static block:
+Static block is called first once the class gets loaded into JVM(before main method).
+Several static block can be present. It will be executed in order.
+Eg:
+static{ //code
+}
+
+Static import:
+import the objects or methods from other packages.
+Mention static if it a static variable or method - eg: import static java.lang.System.out; ----> out.println("No need to mention System.out.println")
+
+This keyword:
+
+In java, this is a reference variable that refers to the current object.
+If the instance variables and parameters have same name then we can use this keyword to differentiate. 
+It can also used to invoke current class method -> this.m() , constructor: default -> this(), parameterized -> this(5)
+
+Eg:
+Student(int rollno,String name,float fee){  
+this.rollno=rollno;  
+this.name=name;  
+this.fee=fee;  
+} 
+
+Super keyword:
+
+The super keyword in Java is a reference variable which is used to refer immediate parent class object.
+Super() is added to the child class which extends the parent class.
+It can be used to refer,
+
+parent variable -> super.a
+parent method -> super.eat();
+parent constructor -> super();
+
+
+Method overloading: can be done using no of parameters or data type of parameter.
+
+Method overriding: Subclass has a same method as parent class it is called overriding.
+
+Interface:
+
+An interface in Java is a blueprint of a class. It has static constants and abstract methods.
+ interfaces can have abstract methods and variables. It cannot have a method body.
+ 
+ There are mainly three reasons to use interface. They are given below.
+It is used to achieve abstraction.
+By interface, we can support the functionality of multiple inheritance.
+It can be used to achieve loose coupling.
+Also to restrict the user to use the methods which is only available in the interface (extra methods in class cannot be accessed when we create objects based on interface)
+
+Eg:
+interface Printable{  
+void print();  
+}  
+interface Showable{  
+void show();  
+}  
+class A7 implements Printable,Showable{  
+public void print(){System.out.println("Hello");}  
+public void show(){System.out.println("Welcome");}  
+
+Since Java 8, interface can have default and static methods
+
+interface Drawable{  
+void draw();  
+default void msg(){System.out.println("default method");}  
+}  
+
+-----------
+
+interface Drawable{  
+void draw();  
+static int cube(int x){return x*x*x;}  
+}  
+
+-------------
+
+Recussion: A method in java that calls itself is called recursive method.
+
+Call by value: f we call a method passing a value, it is known as call by value. The changes being done in the called method, is not affected in the calling method.
+
+Wrapper class: 
+provides the mechanism to convert primitive into object and object into primitive.
+Mainly used inside frameworks such as Collection framework works based on objects.
+It also provides various methods to manipulate the value.
+primitive is preferred inside for loops where speed is required.
+Eg: Integer for int.
+We use Boxing, Unboxing concepts to assign values from primitive to Wrapper & vice versa.
+Eg:
+int i = 5;
+Integer ii = new integer(i); //Boxing
+Integer jj = i; //Auto-Boxing
+int j = jj.intValue(); //Unboxing
+int k = jj; //Auto-Unboxing
+
+ArrayList<Integer> values = new ArrayList<Integer>();
+values.add(5); //Auto-Boxing 
+
+
+Exception Handling :
+try , catch, finally(), throw(throw an exception), throws(declare an exception)
+
+final - keyword, used to apply restriction on class, methods, and variables. 
+finally - block, it is used to execute code whether exception is handled or not.
+finalize - perform cleanup process before garbage collection.
+
+Synchronization: several threads use one object, synchronization is used to handle this by allowing thereads ine by one based on priority.
+
+StringBuffer, StringBuilder - is used to modify string.
+
+Java 8 new features: Lambda expresions, date/Time api, interface private methods, default and static methods in interface.
+
+Collection:
+
+<> -> Generics
+
+List, Set , Map
+
+List: Duplicate, ordered -> extends ArrayList() class
+Set : No duplicate, unordered(random) for Hashset or ordered(sequence -> ascending order) for treeset
+Map: (Key:Value) pair -> Hashmap
+
+-----------------------------------------------------------------
+SUMMARY:
+
+JDK,JVM,JRE
+Variables - types
+Control statements - if, if-else, is-else-if, nested if, Switch.
+Loops - For, while, do while, Break, Continue.
+Objects
+Class
+Methods
+Constructors
+Keywords - 
+
+------------------------------------------------------------------------------------------------------------------------
+
+

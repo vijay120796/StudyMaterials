@@ -1,0 +1,133 @@
+
+GIT:
+
+Distributed Version Control System.
+
+Create repository:  create folder
+Create files: 
+COmmit - maintains all the files which is commited before to go back to the old code.
+Ignore - intentionally ignore in the commit log list
+
+Branch - Create a branch while commit. 
+
+	
+Compare and pull - Used to merge two branches.
+mark as resolve - if any conflict occurs.
+Merge : Confirm merge.
+
+Fork: (open sourcce contribution)
+
+Anonymous account:
+Fork - Create a new file 
+pull reqest - and send a pull request.
+Commit
+
+Project owner account:
+Check on pull requests
+open the pul request
+verify the changes
+merge pull request.
+
+Git pull = git fetch + git merge
+
+Git pull command pulls innovation or commits from a specific branch from your central repository and updates your object branch in your local repository.
+
+Git fetch is also used for the same objective, but it works in a slightly different method. 
+When you behave a git fetch, it pulls all new commits from the desired branch and saves it in a new branch in your local repository. 
+If you need to reflect these changes in your target branch, git fetch should be followed with a git merge. 
+Your target branch will only be restored after combining the target branch and fetched branch. 
+To make it simple for you, remember the equation above.
+
+GIT Clone:
+The git clone command generates a copy of a current Git repository. To get the copy of a central repository, 'cloning' is the simplest way used by programmers.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Version Control :
+Version control is the management of the changes to a document. 
+
+Version:
+the changes are turned as exceptions.
+
+Version Control System:
+1. Storing versions - Snapshots are stored of different versions. Name of each varsion to understand the changes.
+2. Backup - Each version is in local copy and also in GIT.
+3. Analyze - What is changed, when it is changed.
+
+Types - Central , Distributed version control system
+
+Repository:
+
+Directory or storage space where the project can live.
+
+Types: Local, Central repository.
+
+Index(Staging Area): Intermediate layer between local repository and central repository. The files which are not available in index is called as untracked files.
+
+Commit - it is a object which consists of snapshot of the project which is changed. 
+
+Branches - It is a pointer to a specific commit. 
+Types: 1. local branches  2. Remote branches
+
+Active branch: Branch with active commits.
+Slate branch: "Stale branch" is a git branch without commits for the last few months.(3 months for github)
+
+GitIgnore : To ignore certain files or directories while commit.
+Reference:
+https://www.pluralsight.com/guides/how-to-use-gitignore-file
+https://www.freecodecamp.org/news/gitignore-what-is-it-and-how-to-add-to-repo/
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+GIT OPERATIONS AND COMMANDS:
+
+Creating repositories - git init
+Syncing repositories - add orgin, push, pull.
+making changes - status, diff, add, commit
+Parallel development - branch, merge, rebase
+
+
+git init - initialize empty git repository.( Create a local repository)
+
+git remote add origin "GIT_URL" - To add a remote repository.
+
+git pull origin master - pull all files from remote repo.(git pull = git fetch + git merge.)
+git fetch - pull the files from remote rep and save in diff local repo. We need to merge it to the working repo.
+
+git push origin newbranch - update the remote repository from local repository.
+git push -u <remote> <branch-name> : push the new branch to remote.
+
+git status - tells which files are added to index and are ready to commit. Also untracked files.
+
+git diff - tells the modified lines.
+
+git add filename.txt - to add a file to index. No need to add the tracked files if modified(the files already present in index).
+git add -A -> Add all the changes to index at once.(capital A)
+
+git commit -m "commit message" - Commit the changes from index to local repo with message. Will not add the untracked files.
+git commit -a -m "commit message" - Commit all the changes.(small a)
+
+git log - logs of all the commits.
+git log --oneline : logs of all commit in single liners
+
+git branch branchname - create a new branch.
+git branch - view list of branches.
+
+git checkout branchname - Switch to a specific branch.
+git checkout -b newbranchname - Create a new branch and switch to the same.
+
+git stash - store the changes of working repo to stash memory so we can work on a new task. We can work on the stashed projects latrer.
+git stash list -> list of stashes
+git stash apply -> applies the most recent stash.
+git stash apply stash@{2} ->  apply the selected stash.
+
+git merge branchname- Combine the work of different branches together. 
+					  Always go to the destination master brach where we need to merge the changes and enter the merge command.
+
+git rebase branchname - Combine work between two branches. The new commit will be below the previous commit(tip of previous commit) rather than present as a different branch. 
+					It is used to reduce branches. 
+					Always go to the destination master brach where we need to create a new linear commit.
+
+
+git revert 12345 - used to revert the changes to the previous commits based on the commitID. It will create a new commit and will not delete the old commits.( press Shift+q to exit)
+

@@ -1,0 +1,12 @@
+ELASTIC SEARCH:
+
+Open source search engine developed in Java.
+Real time distributed and analytic engine.
+It is based on Lucine engine on top which we have rest interface.
+Supports full text search. i.e completely document based instead of tables and schemas.
+Used for single page application projects.
+
+Advantages of ES:
+scalable, really fast, multilingual, document oriented(JSON), autocompletion and instant search, schema free. 
+
+

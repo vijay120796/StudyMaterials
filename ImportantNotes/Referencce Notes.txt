@@ -1,0 +1,354 @@
+Notes:
+
+keywords:
+
+
+
+new project - Maven or Spring Boot( Spring Starter Project)
+Pom.xml - add jar files( import dependency packages )
+App file - contains the code(.java)
+Model = POJO =	Bean = Persistence class = JPA Entity.( contains getters, setters, constructors, to string, also used to map with DB using annotations)(classname.java)
+View - JSP file ( User interface)
+Controller - (classname.java) - Used to map URI(/) - @requestMapping(/), @RequestParam(getinput), ModelAndView, Model, ModelMap
+DAO - Have the methods for CRUD using session or entitymanager. (.java) @Transactional - 
+Util - configuration, service registry, session factory
+configuration.xml - 
+hibernate.cfg.xml - without boot
+hibernate.properties- with sring boot
+
+bean - singleton, prototype
+@Autowired, @component 
+
+Spring:
+
+Why Spring framework:
+Simplicity- Testability - Loose coupling.
+
+Architecture:
+
+Test layer: 
+Core container layer : Beans, Core, Context, SpEL.
+Data Access/Integration layer: JDBC, ORM, Transactions, OXM, JMS.
+Web: Web, Servlet, MVC
+Misc: Aspects, AOP, instrumentation , messaging
+
+AOP - cross cutting concerns
+OXM - Provides abstraction
+
+FLow:
+
+IOC(Inversion Of control) -> DI (Dependency Injection) -> AOP( Aspect Oriented Programming) -> MVC( Model View Controller) ->
+
+
+
+Spring IOC features: 
+
+Creating Object
+Wiring them together
+Configuring them
+Managing their lifecycle
+
+With POJO class and MetaData it produces fully configured and executable application
+
+It can be configured by loading the XML file or Java Annotations.
+
+Two types of IOC: 
+BeanFactory 
+Application Context
+
+
+Spring DI:
+
+Remove dependency from code, app is easily managible, loosely coupling.
+
+Types:(  inside <bean> )
+By constructor - <construcor-arg>
+Setter method - <property> 
+
+Beans: (JVM-> Containers -> beans)
+
+Beans are objects, and it is the backbone of the app. 
+It is instantiated, managed, assembled by IOC
+The configuration metadata is used to create bean.
+
+Inside bean tag we mention the class, Id, autowire, primary to map. 
+
+autowire - Byname(class name = obj name), Bytype(class type)
+
+primary - 2 classes have same interface to make one class as primary.
+
+
+Spring MVC :
+
+Model - POJO(data)
+View - JSP (User Interface)
+Controller - Servlet ( Request Handler)
+
+Model = POJO =	Bean = Persistence class = JPA Entity.( contains getters, setters, constructors, to string, also used to map with DB using annotations)(classname.java)
+HAs annotations - @Entity, @id, @column etc
+
+View: JSP file which will be converted to HTML. Use JSTL to display the output.
+Inside View folder. 
+Configure prefix and suffix in application.properties file.
+
+Controller: 
+Request -> Front controller(dispatcher servlet) -> send it to the respective controller.
+One servlet- one controller - one request
+@Controller - used to denote controller
+@requestMapping(/) - used to map the URI ( or we can use get or post mapping without boot)
+@RequestParam("input") - Used to fetch the input. It uses HttpSession session.
+ModelAndView - Instead of using HttpSession. Simplify the task. SetAttribute - Used to set the input from the @Requestparam to a object variable
+Model and ModelMap - Insted of using ModelAndView we can use it based on requirement. addAttribute for same. 
+@ModelAttribute - Can be used to assign the values directly.
+
+
+Spring AOP:
+ 
+Aspect oriented programming(Adds cross cutting concerns before and after the actual logic)( easy to maintain code)
+
+Logging, Security, Transactions can be performed using AOP.
+
+AOP core concepts:
+
+Aspect(@Aspect)(@Component) - Class which implements conserns which cuts through many classes ( transaction management, security, etc). It is configured using Spring XML configuration.( @Component - other class will know that this is aspect class)
+Advice - Methods which is executed when joinpoint needs a matching pointcut. ( Action taken by aspect at a particular join point)
+Join point -A point of programme where we execute the methods(advice) ( exception handling, logging , security)
+Pointcut - Expression that are matched with joinpoints to determine advice needs to be executed or not
+Target object - Object on which advices are applied
+Proxy - Object which is created after applying advice to target object.
+Weaving - Process used to specify the when to create object using Advice.( Runtime, Compile time, load time)
+
+Types of advice:
+
+ Before advice - Executed before joinpoint (@before)
+ After advice (finally) - After joinpoint (@After)
+ After returning (@AfterReturning) - After joinpoint executed successfully
+ After throwing ( @AfterThrowing) - Executed when any error or exception in Joinponit.
+ Around (@Around) - Executed both before and after the Joinpoint.
+
+Spring ORM:
+
+Database and Java transactions.
+
+We can use Hibernate as a framework to perform ORM.
+
+Configure in XML file for database connectivity.
+Create a DAO ( Data Access Object) class, where we have the CRUD methods to access the data from database. ( session or entity manager)
+Spring Transactions : @Transactional in DAO to automate the transactions. ( begin, commit)
+Add & Fetch
+C3PO - Connection pool -> multiple connections at a time.
+
+Spring Data JPA:
+
+This repository provides inbuild CRUD methods to contact with Database. 
+This works based on the primary key. repo.getOne(), repo.add(), etc
+
+To make it work basedon other fields we can use QueryDSL.( Domain Specific Language)
+
+@Query: instead of using DSL we can use @Query, to pass complex queries.
+
+
+Spring REST API:
+
+Works based on URI(/)
+
+REST API:
+GET - fetch data
+POST - create a new object
+PUT - Update the object.
+DELETE - delete
+
+Use postman app to verify.
+
+Jackson - Convert Java Object to JSON
+Jackson XML - Convert Java Object to XML
+
+Produces attribue - Hardcode whether JSON or XML should be sent.
+
+Consumes attribute - Hardcode that JSON or XML should be received. {"application/JSON"} or {"application/XML"}
+
+@RestController - Instead of @Controller to mention that this is a rest controller.
+
+@RequestBody - To convert the received JSON or XML to Java Object.
+
+@ResponseBody - Used to specify that we are referring the datas(JSOC, XML) and not the views.
+
+@GetMapping - Can be used instead of @RequestMapping to mention that it only accepts GET method
+@PostMapping - Can be used instead of @RequestMapping to mention that it only accepts POST method
+
+@PathVariable(aid) - Used to fetch a particular row. The aid provided by user is sent to URI.
+We use {aid} in the URI to get the dynamic value. 
+
+
+Spring Security:
+
+kerberos, LDAP, SAML, Oauth
+
+Redirect to the login page to authenticate to access the JSP page.
+
+Spring provides default login page which can be modified.
+
+OAuth is to authenticate using Google or Facebook credentials. 
+
+ReactJS:
+
+The Render Function:
+The ReactDOM.render() function takes two arguments, HTML code and an HTML element.
+The purpose of the function is to display the specified HTML code inside the specified HTML element
+
+Example:
+ReactDOM.render(<p>Hello</p>, document.getElementById('root'));
+
+React JSX:
+JSX stands for JavaScript XML.
+JSX allows us to write HTML in React.
+JSX makes it easier to write and add HTML in React.
+
+Example:
+const myelement = <h1>I Love JSX!</h1>;
+ReactDOM.render(myelement, document.getElementById('root'));
+
+React Components:
+
+Components are independent and reusable bits of code. They serve the same purpose as JavaScript functions, but work in isolation and returns HTML via a render function.
+Components come in two types, Class components and Function components, in this tutorial we will concentrate on Class components.
+
+Shortcut: imrc, CC
+
+Example:
+class Car extends React.Component {
+  render() {
+    return <h2>Hi, I am a Car!</h2>;
+  }
+}
+
+index.js file which renders and display Car component:
+ReactDOM.render(<Car />, document.getElementById('root'));
+
+
+Props:
+
+Props are arguments passed into React components.
+Props are passed to components via HTML attributes.
+
+React Props are like function arguments in JavaScript and attributes in HTML.
+To send props into a component, use the same syntax as HTML attributes:
+
+Example:
+const myelement = <Car brand="Ford" />;
+
+class Car extends React.Component {
+  render() {
+    return <h2>I am a {this.props.brand}!</h2>;
+  }
+}
+
+
+React State:
+
+The state object is where you store property values that belongs to the component.
+When the state object changes, the component re-renders.
+
+Example:
+
+class Car extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      brand: "Ford",
+      model: "Mustang",
+      color: "red",
+      year: 1964
+    };
+  }
+  changeColor = () => {
+    this.setState({color: "blue"});
+  }
+  render() {
+    return (
+      <div>
+        <h1>My {this.state.brand}</h1>
+        <p>
+          It is a {this.state.color}
+          {this.state.model}
+          from {this.state.year}.
+        </p>
+        <button
+          type="button"
+          onClick={this.changeColor}
+        >Change color</button>
+      </div>
+    );
+  }
+}
+
+or
+
+class Car extends React.Component {
+    state = {
+      brand: "Ford",
+      model: "Mustang",
+      color: "red",
+      year: 1964
+    };
+
+SetState(): 
+It is used to change the value of the state.
+Example:
+  changeColor = () => {
+    this.setState({color: "blue"});
+  }
+  
+Lifecycle of components:
+
+The three phases are: 
+Mounting - Added to DOM
+Updating - COmponent is updated whenever there is any change in props or state.
+Unmounting - Removed from DOM
+
+React Events:
+
+onClick={shoot}
+Example:
+<button onClick={shoot}>Take the Shot!</button>
+
+Forms:
+
+class MyForm extends React.Component {
+  render() {
+    return (
+      <form>
+        <h1>Hello</h1>
+        <p>Enter your name:</p>
+        <input
+          type="text"
+        />
+      </form>
+    );
+  }
+}
+ReactDOM.render(<MyForm />, document.getElementById('root'));
+
+Handling forms, Conditional rendering(if statement), Submiting forms(submit button -> onSubmit), 
+
+Aspects of ReactJS:
+
+Virtual DOM:
+Data Binding: Unidirectional flow of data (Action -> Dispacher -> Store -> View)
+Serverside rendering: Server pre-renders the react components and send HtML to browsers.
+
+Fundamentals of reactJS:
+
+JSX
+Components
+Props
+States
+Lifecycle
+Events
+Refs
+Keys
+
+-----
+Lifting up the state: moving the state along with its methods to parent.
+
+Single Source of Truth: moving the state along with its methods to parent so any change in parent will affect all the child.//Refer internet once

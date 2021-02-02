@@ -1,0 +1,288 @@
+MySQL:
+
+Topics:
+USER ( have user keyword)
+Database( have database keyword) ( CREATE, USE, SHOW, DROP)
+Table ( have table keyword) (CREATE, SHOW, DESCRIBE, ALTER, TRUNCATE, DROP, RENAME)
+Queries (Insert INTO - VALUES, Update - SET, Delete, SELECT, REPLACE)
+Clauses (WHERE, DISTINCT, FROM, ORDERBY, GROUP BY, HAVING)
+control flow statement (IF(), IFNULL(), NULLIF(), CASE)
+Conditions ( AND, OR)
+Joins (JOIN, LEFT JOIN, RIGHT JOIN, CROSS JOIN, SELF JOIN, DELETE JOIN.) -> ON table1.id = table2.id
+Keys  ( Unique key, Primary key, Foreign key, Composite key)
+Aggregrate functions {count(), sum(), avg(), min(), max(), first(), last(), GROUP_CONCAT()}
+
+Users: 
+
+CREATE USER vijay IDENTIFIED BY 123GUajsn;
+SHOW USERS;
+DROP USER vijay;
+SELECT USER vijay FROM mysql.user;
+SET PASSWORD FOR vijay@localhost = qjdnodn123;
+
+DATABASE:
+
+SHOW DATABASES;
+CREATE DATABASE Students;
+USE Students;
+DROP DATABASE Students;
+
+TABLES:
+
+SHOW TABLES;
+
+CREATE TABLE Class1 (
+ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+Name varchar(50) NOT NULL,
+Rollno int NOT NULL);
+
+DESCRIBE TABLE Class1;
+TRUNCATE TABLE Class1;
+DROP TABLE Class1;
+
+ALTER TABLE Class1
+ADD DOB int NOT NULL 
+AFTER Rollno;
+
+QUERIES:
+
+INSERT INTO Class1 VALUES (1, VIJAY, 1234, 120796)
+
+REPLACE INTO Class1 VALUES (1, SURYA, 12356, 140797)
+
+DELETE FROM Class1 where ID = 1;
+
+UPDATE Class1 SET NAME = SURYA, Rollno = 124566 WHERE ID = 2
+
+SELECT ID, NAME FROM Class1;
+
+CLAUSES, CONDITIONS:
+
+SELECT  * FROM Class1 WHERE ID = 1;
+
+SELECT * FROM Class1 WHERE NAME = VIJAY ORDERBY ROLLNO;
+
+SELECT * FROM Class1 WHERE NAME = VIJAY GROUPBY CLASS;
+
+SELECT * FROM Class1 WHERE NAME = VIJAY GROUPBY CLASS HAVING( CLASS1 OR CLASS2);
+
+SELECT DISTINCT NAME FROM CLASS1;
+
+AGGREGATE FUNCTIONS:
+
+SELECT SUM(MARKS) AS TOTAL AFTER MARKS FROM CLASS1;
+COUNT() AVG() FIRST() LAST() MIN() MAX() GROUP_CONCAT()
+
+JOINS:
+
+SELECT CLASS1.ID, CLASS1.NAME, CLASS2.ID, CLASS2.NAME FROM CLASS1 INNER JOIN CLASS2 ON CLASS1.ID = CLASS2.ID;
+
+
+User management:
+
+Create user:
+CREATE USER [IF NOT EXISTS] account_name IDENTIFIED BY 'password';  
+
+accountname = username@hostname  
+
+Drop User:
+DROP USER 'account_name';  
+
+Select user:
+Select user from mysql.user;
+
+Change password:
+
+mysql> UPDATE user SET password = PASSWORD('jtp12345') WHERE user = 'peter' AND host = 'localhost';    
+mysql> FLUSH PRIVILEGES;  
+or
+SET PASSWORD FOR 'peter'@'localhost' = jtp12345;  
+or
+ALTER USER peter@localhost IDENTIFIED BY 'jtp123';  
+
+
+Database: 
+
+CREATE DATABASE database_name;  
+USE database_name;  
+SHOW DATABASES;  
+DROP DATABASE DB_name;
+Copy database: Create a database -> using mysqldump  copy the datas from old DB to new DB.
+
+
+Tables:
+
+Create table:
+
+mysql> CREATE TABLE employee_table(  
+    id int NOT NULL AUTO_INCREMENT,  
+    name varchar(45) NOT NULL,  
+    occupation varchar(35) NOT NULL,  
+    age int NOT NULL,  
+    PRIMARY KEY (id)  
+);  
+
+Show Tables;
+
+DESCRIBE Table;	
+
+Alter table:
+
+
+ALTER TABLE cus_tbl  
+ADD cus_address varchar(100) NOT NULL  
+AFTER cus_surname,  
+ADD cus_salary int(100) NOT NULL  
+AFTER cus_age ;  
+
+ RENAME old_table TO new_table;  
+ 
+ TRUNCATE TABLE  table_name;    -> Removes whole data without structure.
+ 
+ DROP TABLE  table_name;
+ 
+Copy table:
+ 
+CREATE TABLE IF NOT EXISTS new_table_name LIKE existing_table_name;  
+INSERT new_table_name SELECT * FROM existing_table_name;  
+
+ADD/Delete Column in table:
+
+ALTER TABLE Test   
+ADD COLUMN City VARCHAR(30) NOT NULL;  
+
+ALTER TABLE Test DROP COLUMN Branch;  
+
+View - Virtual table:
+
+CREATE VIEW trainer AS    
+SELECT course_name, trainer     
+ FROM courses;
+ 
+ ALTER VIEW trainer AS    
+SELECT id, course_name, trainer  
+FROM courses; 
+
+DROP VIEW trainer;    
+
+Create view with Join Clause:
+
+CREATE VIEW Trainer       
+AS SELECT c.course_name, c.trainer, t.email       
+FROM courses c, contact t   
+WHERE c.id = t.id;  
+
+
+MySQL Queries:
+
+Insert, Update, Delete, SELECT, REPLACE
+
+INSERT INTO People (name, occupation)   
+VALUES ('Stephen', 'Scientist'), ('Bob', 'Actor');  
+
+UPDATE People  
+SET name = 'Mary', occupation = 'Content Writer'  
+WHERE id = 105;  
+
+DELETE FROM cus_tbl  
+WHERE cus_id = 6; 
+
+SELECT officer_name, address  
+FROM officers  
+
+REPLACE INTO Person (id, city)  
+VALUES(4,'Amsterdam'); 
+
+
+
+MySQL Clauses:
+
+WHERE, DISTINCT, FROM, ORDERBY, GROUP BY, HAVING
+
+MySQL WHERE Clause is used with SELECT, INSERT, UPDATE and DELETE clause to filter the results. It specifies a specific position where you have to do the operation.
+
+SELECT *  
+FROM officers  
+WHERE address = 'Mau';  
+
+MySQL DISTINCT clause is used to remove duplicate records from the table and fetch only the unique records. The DISTINCT clause is only used with the SELECT statement.
+
+SELECT DISTINCT expressions  
+FROM tables  
+[WHERE conditions];  
+
+SELECT DISTINCT officer_name, address  
+FROM officers;  
+
+SELECT *  
+FROM officers  
+WHERE officer_id <= 3; 
+
+SELECT *  
+FROM officers  
+WHERE address = 'Lucknow'  
+ORDER BY officer_name;  
+
+SELECT address, COUNT(*)  
+FROM   officers   
+GROUP BY address;   
+
+MySQL HAVING Clause is used with GROUP BY clause. It always returns the rows where condition is TRUE.
+
+SELECT emp_name, SUM(working_hours) AS "Total working hours"  
+FROM employees  
+GROUP BY emp_name  
+HAVING SUM(working_hours) > 5;  
+
+
+CONTROL FLOW STATEMENTS:
+
+IF(), IFNULL(), NULLIF(), CASE
+
+SELECT lastname,  
+IF(age>20,"Mature","Immature")    
+As Result  
+FROM student;  
+
+The IFNULL function accepts two expressions, and if the first expression is not null, it returns the first arguments. If the first expression is null, it returns the second argument. This function returns either string or numeric value, depending on the context where it is used.
+
+SELECT IFNULL(NULL,5);  // ANS - 5
+
+The NULLIF function accepts two expressions, and if the first expression is equal to the second expression, it returns the NULL. Otherwise, it returns the first expression.
+
+SELECT NULLIF("javaTpoint", "javaTpoint");   // ans - NULL
+
+SELECT studentid, firstname,  
+ CASE class   
+    WHEN 'CS' THEN 'Computer Science'   
+    WHEN 'EC' THEN 'Electronics and Communication'   
+    ELSE 'Electrical Engineering'   
+END AS department from students;  
+
+
+MySQL JOINS:
+
+JOIN, LEFT JOIN, RIGHT JOIN, CROSS JOIN, SELF JOIN, DELETE JOIN.
+
+SELECT columns  
+FROM table1   
+INNER JOIN table2  // CHANGE INNER TO -> LEFT, RIGHT, 
+ON table1.column = table2.column;  
+
+SELECT *  
+FROM customers  
+CROSS JOIN contacts;    //joins in all possible ways
+
+MySQL Keys:
+
+Unique Key - All values will be unique
+Primary key - Unique, not null , not empty. manditory
+Foreign key - Reference to primary key in different table
+Composite key - Any key such as primary key, super key, or candidate key can be called composite key when they have combined with more than one attribute. A composite key is useful when the table needs to identify each record with more than one attribute uniquely.
+
+Aggregate Functions:
+
+count(), sum(), avg(), min(), max(), first(), last(), GROUP_CONCAT()
+
+SELECT COUNT(emp_name) FROM employees;  
+
